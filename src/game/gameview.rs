@@ -68,8 +68,8 @@ impl cursive::view::View for GameView {
         }
 
         let pow = (self.model.snake.len() + 1) as f64;
-        let difficuty = 10.0 / pow.log2();
-        if self.tick >= difficuty as usize {
+        let difficulty = 10.0 / pow.log2();
+        if self.tick >= difficulty as usize {
             game_over = !self.model.do_action();
             self.tick = 0;
         }

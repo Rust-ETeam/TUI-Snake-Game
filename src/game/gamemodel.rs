@@ -20,11 +20,6 @@ pub enum Action {
     Down,
 }
 
-pub struct Object {
-    pub pos: Vec2,
-    pub kind: ObjectKind,
-}
-
 pub struct GameModel {
     pub map_size: usize,
     pub game_map: Vec<Vec<ObjectKind>>,
