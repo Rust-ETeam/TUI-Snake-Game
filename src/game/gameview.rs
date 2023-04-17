@@ -64,7 +64,7 @@ impl cursive::view::View for GameView {
             Event::Key(Key::Right) | Event::Char('d') => self.model.set_forward(Action::Right),
             Event::Char('r') => self.model = GameModel::new(MAP_SIZE),
             Event::Refresh => {}
-            _ => self.tick -= 1,
+            _ => return EventResult::Ignored,
         }
 
         let base = 5;
