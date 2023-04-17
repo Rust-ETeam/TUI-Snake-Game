@@ -4,7 +4,7 @@ use cursive::{Cursive, Printer};
 
 use crate::game::gamemodel::{Action, GameModel, ObjectKind};
 
-const MAP_SIZE:usize = 32;
+const MAP_SIZE: usize = 16;
 
 pub struct GameView {
     model: GameModel,
@@ -67,8 +67,9 @@ impl cursive::view::View for GameView {
             _ => self.tick -= 1,
         }
 
-        let pow = (self.model.snake.len() + 1) as f64;
-        let difficulty = 10.0 / pow.log2();
+        let base = 5;
+        let pow = (self.model.snake.len() + base - 1) as f64;
+        let difficulty = 10.0 / pow.log(base as f64);
         if self.tick >= difficulty as usize {
             game_over = !self.model.do_action();
             self.tick = 0;
